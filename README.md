@@ -1,1 +1,2 @@
-# learning-prolog
+# Learning Prolog
+
