@@ -1,18 +1,14 @@
-insert(ELEMENT, L, [], SORTED) :-
-  append(L, [ELEMENT], SORTED).
-insert(ELEMENT, L1, L2, SORTED) :-
-  [HEAD | _] = L2,
-  HEAD >= ELEMENT,
-  append(L1, [ELEMENT | L2], SORTED).
-insert(ELEMENT, L1, [HEAD | TAIL], SORTED) :-
-  append(L1, [HEAD], NEWL1),
-  insert(ELEMENT, NEWL1, TAIL, SORTED).
+insert(E, [], [E]).
+insert(E1, [E2 | T1], [E2 | T2]) :-
+  E1 > E2,
+  insert(E1, T1, T2).
+insert(E1, [E2 | T], [E1, E2 | T]) :-
+  E1 =< E2.
 
 insertsort__([], SORTED, SORTED).
 insertsort__([HEAD | TAIL], ACC, SORTED) :-
-  insert(HEAD, [], ACC, NEWSORTED),
-  insertsort__(TAIL, NEWSORTED, SORTED).
+  insert(HEAD, ACC, NEWACC),
+  insertsort__(TAIL, NEWACC, SORTED).
 
-insertsort([], []).
 insertsort(UNSORTED, SORTED) :-
   insertsort__(UNSORTED, [], SORTED).
