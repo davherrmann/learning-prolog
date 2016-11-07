@@ -22,4 +22,4 @@ read_and_search(L, KEY) :-
 as_search(L) :-
   repeat,
   read_and_search(L, KEY),
-  KEY = genug.
+  KEY = genug, !.
