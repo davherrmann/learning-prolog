@@ -1,4 +1,5 @@
-insert(ELEMENT, [], [], [ELEMENT]).
+insert(ELEMENT, L, [], SORTED) :-
+  append(L, [ELEMENT], SORTED).
 insert(ELEMENT, L1, L2, SORTED) :-
   [HEAD | _] = L2,
   HEAD >= ELEMENT,
